@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Add</title>
-  </head>
-  <body>
+<?php
+  include("header.php");
+?>
+<div class="ui container">
+
     <?php
 
       include_once("config.php");
@@ -18,16 +16,24 @@
         $stmt = $pdo->prepare($sql);
         $stmt->execute(["name" => $name, "email" => $email]);
 
-        echo "POST ADDED";
+        // echo "POST ADDED";
+        echo '<script>window.location.href = "index.php";</script>';
       }
      ?>
 
-     <form action="add.php" method="post">
-       <!-- <input type="text" name="id" placeholder="id"> -->
-       <input type="text" name="name" placeholder="name">
-       <input type="text" name="email" placeholder="email">
-       <input type="submit" name="submit" value="Add">
-     </form>
+     <form class="ui form" action="add.php" method="post">
+       <div class="field">
+         <label>First Name</label>
+         <input type="text" name="name" placeholder="Name">
+       </div>
+       <div class="field">
+         <label>Email</label>
+         <input type="email" name="email" placeholder="Email">
+       </div>
 
-  </body>
-</html>
+       <button class="ui button" type="submit" name="submit" value="Add">Submit</button>
+     </form>
+   </div>
+   <?php
+     include("footer.php");
+   ?>

@@ -12,7 +12,8 @@
       $sql = "DELETE FROM crudtrial1 WHERE id = :id";
       $stmt = $pdo->prepare($sql);
       $stmt->execute(["id" => $id]);
-      echo "POST DELETED";
+      // echo "POST DELETED";
+      echo '<script>window.location.href = "index.php";</script>';
     ?>
   </body>
 </html>

@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Update</title>
-  </head>
-  <body>
+<?php
+  include("header.php");
+?>
+<div class="ui container">
+
+
 
     <?php
       include_once("config.php");
@@ -15,11 +14,12 @@
         $name = $_POST["name"];
         $email = $_POST["email"];
 
-        $sql = "UPDATE crudtrial1 SET name = :name WHERE id = :id";
+        $sql = "UPDATE crudtrial1 SET name = :name, email = :email WHERE id = :id";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute(["name" => $name, "id" => $id]);
+        $stmt->execute(["name" => $name, "email" => $email, "id" => $id]);
 
-        echo "POST UPDATED";
+        // echo "POST UPDATED";
+        echo '<script>window.location.href = "index.php";</script>';
       } else{
         $id = $_GET["id"];
         $sql = "SELECT * FROM crudtrial1 WHERE id = :id";
@@ -36,14 +36,21 @@
     ?>
 
 
-  <form action="update.php?id=<?php echo $id ?>" method="post">
-    <input type="text" name="name" value="<?php echo $name ?>">
-    <input type="text" name="email" value="<?php echo $email ?>">
-    <input type="submit" name="update" value="Update">
+
+  <form class="ui form" action="update.php?id=<?php echo $id ?>" method="post">
+    <div class="field">
+      <label>First Name</label>
+      <input type="text" name="name" value="<?php echo $name ?>">
+    </div>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" name="email" value="<?php echo $email ?>">
+    </div>
+
+    <button class="ui button" type="submit" name="update" value="Update">Submit</button>
   </form>
 
-
-
-
-  </body>
-</html>
+</div>
+<?php
+  include("footer.php");
+?>
