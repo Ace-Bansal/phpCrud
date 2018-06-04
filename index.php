@@ -25,7 +25,7 @@
         echo "<tr>";
         echo "<td>$user->name</td>";
         echo "<td>$user->email</td>";
-        echo "<td><button class='ui small button'><a style='color: inherit;' href = 'update.php?id={$user->id}'>Update</a></button><button class='ui small red button'><a style='color: inherit;' href = 'delete.php?id={$user->id}'>Delete</a></button></td>";
+        echo "<td><a href = 'update.php?id={$user->id}'><button class='ui small button'>Update</button></a><a href = 'delete.php?id={$user->id}'><button class='ui small red button'>Delete</button></a></td>";
         echo "</tr>";
       }
 
@@ -37,7 +37,7 @@
   </tr></tfoot>
 </table>
 
-<button class="ui button basic green"><a style='color: inherit;' href = 'add.php'>Add</a></button>
+<a href = 'add.php'><button class="ui button basic green">Add</button></a>
 </div>
 
 
